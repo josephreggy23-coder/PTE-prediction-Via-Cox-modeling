@@ -1,0 +1,57 @@
+question,metric,value,ci_low,ci_high,unit,note
+cohort,n_larvae,100.0,,,larvae,
+cohort,n_events,87.0,,,larvae,reached stage III
+cohort,n_censored,13.0,,,larvae,administrative at 1800 s
+cohort,events_per_predictor_M1,7.909,,,,"WARNING: M1 events-per-predictor = 7.91 (< 10). Coefficient estimates are variance-limited; treat individual hazard ratios as directional evidence, not precise effect sizes."
+q1,c_index_M0_pressure_only,0.583435960591133,0.5180423060970551,0.6508728179551122,,leave-one-fish-out
+q1,c_index_M1_pressure_plus_lfp,0.5744047619047619,0.5221664575491426,0.6275616896695944,,leave-one-fish-out
+q1,delta_c_index,-0.009031198686371145,-0.03328239355709264,0.01529557668458037,,"M1 - M0, paired"
+q1,likelihood_ratio_chi2,13.32979083043358,,,,df = 9
+q1,likelihood_ratio_p,0.14824251665203866,,,,
+q1,permutation_p_M0,0.000999000999000999,,,,1000 end-to-end refits
+q1,permutation_null_mean_M0,0.45799425287356327,,,,
+q1,permutation_null_95th_M0,0.5319016830870278,,,,
+q1,permutation_p_M1,0.02197802197802198,,,,1000 end-to-end refits
+q1,permutation_null_mean_M1,0.4679113300492611,,,,
+q1,permutation_null_95th_M1,0.5587130541871921,,,,
+q2,HR_lfp_ap_slope,0.9999998588903762,0.9999998351957222,0.999999900264038,per SD,elastic net; expected HR < 1; SHRUNK TO ZERO by the penalty; no direction to check
+q2,HR_unpenalized_lfp_ap_slope,0.4608711680847573,,,per SD,unpenalized sensitivity fit; expected HR < 1; as expected
+q2,HR_lfp_variance_uV2,1.0000000263511928,0.9999999397384272,1.0000001160245566,per SD,elastic net; expected HR > 1; SHRUNK TO ZERO by the penalty; no direction to check
+q2,HR_unpenalized_lfp_variance_uV2,0.780344254438313,,,per SD,unpenalized sensitivity fit; expected HR > 1; INVERTED
+q2,HR_lfp_autocorr_lag1,1.0000000962066256,1.0000000495623607,1.000000134131556,per SD,elastic net; expected HR > 1; SHRUNK TO ZERO by the penalty; no direction to check
+q2,HR_unpenalized_lfp_autocorr_lag1,0.9839510412884377,,,per SD,unpenalized sensitivity fit; expected HR > 1; INVERTED
+q2,HR_lfp_discharge_rate_per_min,1.0000001312612479,1.000000058611471,1.0000001779823389,per SD,elastic net; expected HR > 1; SHRUNK TO ZERO by the penalty; no direction to check
+q2,HR_unpenalized_lfp_discharge_rate_per_min,1.0389503488171359,,,per SD,unpenalized sensitivity fit; expected HR > 1; as expected
+q3,signs_agree,0.0,,,,lfp_variance_uV2 vs lfp_autocorr_lag1
+q3,feature_correlation_pearson,0.6688474235164973,,,,
+q3,both_match_expected_direction,0.0,,,,
+q4,pooled_within_stratum_c_index,0.4126916524701874,,,,"global risk score, same-hit pairs only"
+q4,c_index_within_0cm,0.1631578947368421,0.04372003636964788,0.31410595794986523,,19 events / 25 larvae
+q4,c_index_within_27cm,0.5275862068965518,0.35330920008193784,0.6931881608930537,,20 events / 25 larvae
+q4,c_index_within_54cm,0.5217391304347826,0.35017157581865266,0.7183377241868477,,23 events / 25 larvae
+q4,c_index_within_108cm,0.43,0.26688599298497145,0.5882506661201066,,25 events / 25 larvae
+q4,refit_c_index_0cm,0.3929824561403509,0.2947736365700017,0.48421463815789473,,events-per-predictor 1.90 is far below 5; this estimate is descriptive only
+q4,refit_c_index_27cm,0.6172413793103448,0.5051531462258105,0.7183124014847206,,events-per-predictor 1.82 is far below 5; this estimate is descriptive only
+q4,refit_c_index_54cm,0.18394648829431437,0.09821753123816736,0.2957844628748098,,events-per-predictor 2.09 is far below 5; this estimate is descriptive only
+q4,refit_c_index_108cm,0.5333333333333333,0.391555023923445,0.6713403751593515,,events-per-predictor 2.27 is far below 5; this estimate is descriptive only
+q5,mean_risk_Sham,-0.5563558794071303,-0.5959564186108923,-0.5167553402033682,,n = 25
+q5,mean_risk_TBI_27cm,-0.06353651580728328,-0.09926163717539471,-0.027811394439171848,,n = 25
+q5,mean_risk_TBI_54cm,0.14873676973164504,0.09260024346643063,0.20487329599685944,,n = 25
+q5,mean_risk_TBI_108cm,0.49055972515727037,0.43776963377435973,0.543349816540181,,n = 25
+q5,ordering_is_monotone,1.0,,,,Sham < TBI_27cm < TBI_54cm < TBI_108cm
+q5,spearman_rho_height_vs_risk,0.9469256796930344,,,,p = 4.23e-50
+q6,R2_on_pressure_beh_baseline_speed_mm_s,0.8705084595446169,0.8133663757469816,0.9110817299856473,,largely explained by dose
+q6,R2_on_pressure_beh_baseline_immobile_frac,0.728408411184665,0.6231174230036172,0.8084813255426573,,largely explained by dose
+q6,R2_on_pressure_beh_baseline_burst_rate_per_min,0.8494745358000749,0.7842292111471313,0.8962480343478638,,largely explained by dose
+q7,c_index_holdout_0cm,,,,,"every held-out larva received the same risk score (-0.9898); the retained predictors are constant within this stratum, so concordance is undefined rather than at chance"
+q7,c_index_holdout_27cm,0.5206896551724138,0.36822169932955134,0.6917437825332562,,20 events held out
+q7,c_index_holdout_54cm,0.49498327759197325,0.3556279751680817,0.6456140350877193,,23 events held out
+q7,c_index_holdout_108cm,0.51,0.37853774783934924,0.6514084507042254,,25 events held out
+q8,calibration_slope_risk_domain,0.6239245927015865,0.1141085422473701,1.1337406431558028,,target 1.000
+q8,calibration_slope_time_domain,0.2398346433397692,,,,log observed on log predicted
+q8,calibration_intercept_time_domain,4.692081570012457,,,,target 0
+q8,median_absolute_error,297.80000000000007,,,s,
+q8,mean_absolute_error,329.3103448275862,,,s,
+q8,mean_signed_bias,-110.38160919540226,,,s,positive = predicted later than observed
+diagnostics,schoenfeld_global_p,0.5653577828489814,,,,df = 10; violated: ['lfp_power_mid_norm']
+diagnostics,ph_assumption_violated,0.0,,,,NOT switched; Cox retained

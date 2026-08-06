@@ -1,0 +1,2 @@
+"""Post-traumatic epileptogenesis survival analysis."""
+__version__ = "1.0.0"
