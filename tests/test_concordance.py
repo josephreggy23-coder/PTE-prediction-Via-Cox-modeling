@@ -159,6 +159,16 @@ class TestConcordanceEdgeCases:
                 np.array([0.5, 0.3]),
             )
 
+    def test_pair_counts_sum_to_usable(self) -> None:
+        """concordant + discordant + tied_risk must equal usable."""
+        rng = np.random.default_rng(123)
+        n = 30
+        time = rng.exponential(3.0, size=n)
+        event = rng.binomial(1, 0.6, size=n)
+        risk = rng.normal(size=n)
+        result = concordance_index(time, event, risk)
+        assert result.concordant + result.discordant + result.tied_risk == result.usable
+
     def test_nan_values_dropped(self) -> None:
         """NaN entries should be silently dropped."""
         time = np.array([1.0, np.nan, 3.0, 4.0])
@@ -194,6 +204,13 @@ class TestSomersD:
             c_index=0.0, concordant=0, discordant=10, tied_risk=0, usable=10
         )
         assert result.somers_d == pytest.approx(-1.0)
+
+    def test_somers_d_at_075(self) -> None:
+        """C = 0.75 implies D = 0.5."""
+        result = ConcordanceResult(
+            c_index=0.75, concordant=15, discordant=5, tied_risk=0, usable=20
+        )
+        assert result.somers_d == pytest.approx(0.5)
 
 
 # ------------------------------------------------------------------
@@ -238,6 +255,30 @@ class TestConcordanceBootstrapCI:
 
         ci = concordance_bootstrap_ci(time, event, risk, n_bootstrap=100, seed=2)
         assert ci["se"] > 0.0
+
+    def test_ci_width_shrinks_with_sample_size(self) -> None:
+        """Larger datasets should yield narrower bootstrap CIs."""
+        rng = np.random.default_rng(55)
+        n_small = 30
+        n_large = 200
+
+        time_large = rng.exponential(3.0, size=n_large)
+        event_large = np.ones(n_large)
+        risk_large = -time_large + rng.normal(0, 0.5, size=n_large)
+
+        time_small = time_large[:n_small]
+        event_small = event_large[:n_small]
+        risk_small = risk_large[:n_small]
+
+        ci_small = concordance_bootstrap_ci(
+            time_small, event_small, risk_small, n_bootstrap=300, seed=10
+        )
+        ci_large = concordance_bootstrap_ci(
+            time_large, event_large, risk_large, n_bootstrap=300, seed=10
+        )
+        width_small = ci_small["ci_high"] - ci_small["ci_low"]
+        width_large = ci_large["ci_high"] - ci_large["ci_low"]
+        assert width_large < width_small
 
     def test_n_bootstrap_ok_reported(self) -> None:
         """All bootstrap samples should succeed for uncensored data."""
