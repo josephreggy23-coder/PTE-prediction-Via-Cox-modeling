@@ -5,3 +5,7 @@ __pycache__/
 venv/
 *.egg-info/
 results/run_full.log
+
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
