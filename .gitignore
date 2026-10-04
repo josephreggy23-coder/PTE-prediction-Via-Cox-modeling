@@ -9,3 +9,8 @@ results/run_full.log
 .ruff_cache/
 .mypy_cache/
 .ipynb_checkpoints/
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
