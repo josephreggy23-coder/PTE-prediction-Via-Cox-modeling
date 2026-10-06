@@ -1,4 +1,4 @@
-"""Entry point: run the whole analysis and write the two output artefacts.
+"""Entry point: run the whole analysis and write the two output artifacts.
 
     python run_analysis.py                 # full run, 1000 permutations
     python run_analysis.py --permutations 50   # quick smoke run
