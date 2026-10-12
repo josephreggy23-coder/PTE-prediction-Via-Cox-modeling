@@ -17,3 +17,5 @@ Thumbs.db
 .vscode/
 .mypy_cache/
 ~$*.xlsx
+.ruff_cache/
+.ipynb_checkpoints/
