@@ -433,6 +433,9 @@ Two practices are worth generalising. First, **stratified evaluation should be r
 
 ```
 latent_fish_data.xlsx          one row per larva, n = 100
+run_analysis.py                entry point for the full analysis
+make_framework_figure.py       regenerates Figure 1
+requirements.txt               pinned package versions
 pte/
   config.py                    seeds, feature sets, prespecified directions
   data.py                      loading and censoring invariants
