@@ -12,10 +12,6 @@ import pytest
 from scipy import stats as sp_stats
 
 from pte.kaplan_meier import (
-    ConfidenceInterval,
-    KaplanMeierResult,
-    LogRankResult,
-    MedianSurvival,
     greenwood_variance,
     kaplan_meier,
     log_log_ci,

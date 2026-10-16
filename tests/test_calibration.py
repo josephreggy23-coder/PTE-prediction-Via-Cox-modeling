@@ -5,7 +5,6 @@ comparison, and the Brier skill score.
 """
 
 import numpy as np
-import pytest
 
 from pte.calibration import (
     BrierResult,
