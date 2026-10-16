@@ -7,7 +7,6 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 
-from . import config as C  # noqa: E402
 
 INK = "#1b1b1b"
 ACCENT = "#b3341f"

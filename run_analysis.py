@@ -13,7 +13,6 @@ import time
 import warnings
 from collections import Counter
 
-import numpy as np
 
 warnings.filterwarnings("ignore")
 
