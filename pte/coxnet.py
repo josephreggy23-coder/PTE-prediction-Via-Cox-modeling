@@ -329,7 +329,6 @@ def fit(X: np.ndarray, time: np.ndarray, event: np.ndarray,
         # the next Newton step clean up the remainder. Exact solves here
         # cost far more than the extra outer iteration they save.
         b = beta.copy()
-        hb = np.zeros(p)                        # H @ (b - beta), kept current
         hdiag = np.diag(hess).copy()
         denom_l2 = hdiag + pen_n * (1.0 - l1_ratio) * w
         thresh = pen_n * l1_ratio * w
