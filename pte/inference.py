@@ -104,7 +104,6 @@ def hazard_ratios(df, features, penalizer, l1_ratio,
     rng = np.random.default_rng(seed)
     clutches = df[C.CLUTCH_COL].to_numpy()
     groups = [np.flatnonzero(clutches == g) for g in np.unique(clutches)]
-    idx = np.asarray(df.index)
 
     draws = np.full((n_boot, len(features)), np.nan)
     ok = 0
