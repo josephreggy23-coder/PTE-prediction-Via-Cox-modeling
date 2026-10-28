@@ -19,3 +19,8 @@ Thumbs.db
 ~$*.xlsx
 .ruff_cache/
 .ipynb_checkpoints/
+
+# Environment / logs
+.env
+coverage.xml
+*.log
