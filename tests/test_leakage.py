@@ -103,7 +103,7 @@ def test_canary_would_actually_fire(df):
     proves nothing.
     """
     idx = list(df.index)
-    held, train = idx[:10], idx[10:]
+    train = idx[10:]  # rows idx[:10] are the held-out fold
 
     clean = FoldPipeline(features=C.M1_FEATURES, seed=C.SEED,
                          tag="canary").fit(df, train).fingerprint()

@@ -185,7 +185,6 @@ def test_auc_in_window():
     time, event, risk = _random_data(n=200, seed=10)
     result = td_auc_curve(time, event, risk, n_times=40, ipcw=False)
 
-    full = result.mean_auc
     t_mid = float(np.median(result.eval_times))
     early = result.auc_in_window(result.eval_times[0], t_mid)
     late = result.auc_in_window(t_mid, result.eval_times[-1])
