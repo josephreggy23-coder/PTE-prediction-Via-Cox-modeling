@@ -480,6 +480,8 @@ Runtime is approximately 3.8 h, almost entirely the 1000 end-to-end permutation 
 python run_analysis.py --permutations 50 --bootstrap 500
 ```
 
+Use `--no-permutations` to skip the permutation null entirely, and `--workers N` to set the number of parallel permutation processes (default: CPU count minus one).
+
 Verification of the leakage guards, survival-data invariants, solver equivalence, and reporting logic (196 tests):
 
 ```bash
