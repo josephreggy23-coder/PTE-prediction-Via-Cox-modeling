@@ -445,12 +445,20 @@ pte/
   inference.py                 hazard ratios, Schoenfeld residuals, Weibull AFT
   permutation.py               1000-iteration null, refit end to end
   questions.py                 the eight prespecified analyses
+  concordance.py               Harrell's concordance index
+  td_discrimination.py         time-dependent discrimination measures
+  calibration.py               Brier score and calibration diagnostics
+  kaplan_meier.py              Kaplan-Meier curves and log-rank test
+  ph_diagnostics.py            proportional hazards (Schoenfeld) diagnostics
   report.py, plots.py          results.json, metrics.csv, figures
 tests/
   test_leakage.py              sentinel canary + audit trail
   test_data.py                 censored larvae never dropped or recoded
   test_equivalence.py          coxnet vs lifelines agreement
   test_questions.py            reporting logic for directions and intervals
+  test_concordance.py, test_td_discrimination.py, test_calibration.py,
+  test_kaplan_meier.py, test_ph_diagnostics.py
+                               metric and diagnostic modules
 results/
   results.json                 all metrics, CIs, diagnostics, seeds, versions
   metrics.csv                  flat metrics table
@@ -472,7 +480,7 @@ Runtime is approximately 3.8 h, almost entirely the 1000 end-to-end permutation 
 python run_analysis.py --permutations 50 --bootstrap 500
 ```
 
-Verification of the leakage guards, survival-data invariants, solver equivalence, and reporting logic (70 tests):
+Verification of the leakage guards, survival-data invariants, solver equivalence, and reporting logic (196 tests):
 
 ```bash
 python -m pytest tests/ -v
