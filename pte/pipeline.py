@@ -177,9 +177,9 @@ class FoldPipeline:
         best = (None, None, -np.inf)
         for l1 in self.l1_grid:
             # Track a warm start down the penalty path within each fold.
-            warm = {k: None for k in range(len(prepared))}
-            scores = {pen: 0.0 for pen in self.penalizer_grid}
-            usable = {pen: 0 for pen in self.penalizer_grid}
+            warm = dict.fromkeys(range(len(prepared)))
+            scores = dict.fromkeys(self.penalizer_grid, 0.0)
+            usable = dict.fromkeys(self.penalizer_grid, 0)
 
             for pen in sorted(self.penalizer_grid, reverse=True):
                 for k, (tr, st_tr, rs_tr) in enumerate(prepared):

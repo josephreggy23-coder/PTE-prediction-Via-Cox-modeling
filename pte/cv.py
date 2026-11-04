@@ -44,7 +44,7 @@ def leave_one_fish_out(df: pd.DataFrame, features: list,
     med = np.full(n, np.nan)
     pens = np.empty(n)
     l1s = np.empty(n)
-    sel_counts = {f: 0 for f in features}
+    sel_counts = dict.fromkeys(features, 0)
 
     for i, held in enumerate(idx):
         train = [j for j in idx if j != held]
