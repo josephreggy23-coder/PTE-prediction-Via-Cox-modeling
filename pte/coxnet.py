@@ -74,7 +74,7 @@ class RiskSets:
 
     @staticmethod
     def build(time: np.ndarray, event: np.ndarray,
-              strata: np.ndarray | None = None) -> "RiskSets":
+              strata: np.ndarray | None = None) -> RiskSets:
         n = len(time)
         if strata is None:
             strata = np.zeros(n, dtype=np.int64)
@@ -284,7 +284,7 @@ def fit(X: np.ndarray, time: np.ndarray, event: np.ndarray,
         warm_start: np.ndarray | None = None,
         max_iter: int = C.MAX_ITER, tol: float = C.TOL,
         compute_baseline: bool = False,
-        risk_sets: "RiskSets | None" = None) -> CoxnetFit:
+        risk_sets: RiskSets | None = None) -> CoxnetFit:
     """Proximal-Newton elastic-net Cox fit.
 
     `risk_sets` may be supplied pre-built. Times and strata do not change

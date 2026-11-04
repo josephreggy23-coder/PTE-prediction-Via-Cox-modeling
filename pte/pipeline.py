@@ -102,7 +102,7 @@ class FoldPipeline:
         return df.loc[index, C.CLUTCH_COL].to_numpy()
 
     # -------------------------------------------------------------- fit
-    def fit(self, df, index) -> "FoldPipeline":
+    def fit(self, df, index) -> FoldPipeline:
         index = list(index)
         self.fit_index_ = tuple(index)
 
