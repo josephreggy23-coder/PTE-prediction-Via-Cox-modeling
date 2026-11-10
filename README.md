@@ -474,7 +474,7 @@ pip install -r requirements.txt
 python run_analysis.py
 ```
 
-Runtime is approximately 3.8 h, almost entirely the 1000 end-to-end permutation refits. For a rapid pass:
+The analysis was run with Python 3.14 (see Section 2.9 for exact package versions). Runtime is approximately 3.8 h, almost entirely the 1000 end-to-end permutation refits. For a rapid pass:
 
 ```bash
 python run_analysis.py --permutations 50 --bootstrap 500
