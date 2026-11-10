@@ -24,3 +24,9 @@ Thumbs.db
 .env
 coverage.xml
 *.log
+
+# Editor and test caches
+*.swp
+desktop.ini
+.hypothesis/
+.tox/
