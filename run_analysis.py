@@ -28,11 +28,15 @@ def _log(msg, t0=None):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--permutations", type=int, default=C.N_PERMUTATIONS)
-    ap.add_argument("--no-permutations", action="store_true")
-    ap.add_argument("--bootstrap", type=int, default=C.N_BOOTSTRAP)
-    ap.add_argument("--workers", type=int, default=None)
+    ap = argparse.ArgumentParser(description="Run the full PTE survival analysis and write results/.")
+    ap.add_argument("--permutations", type=int, default=C.N_PERMUTATIONS,
+                    help="permutation-null iterations (default: %(default)s)")
+    ap.add_argument("--no-permutations", action="store_true",
+                    help="skip the permutation null entirely")
+    ap.add_argument("--bootstrap", type=int, default=C.N_BOOTSTRAP,
+                    help="bootstrap resamples for confidence intervals (default: %(default)s)")
+    ap.add_argument("--workers", type=int, default=None,
+                    help="parallel workers for permutations (default: CPU count - 1)")
     args = ap.parse_args(argv)
 
     C.N_BOOTSTRAP = args.bootstrap
