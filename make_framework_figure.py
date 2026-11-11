@@ -32,6 +32,10 @@ LINE_DY = 0.0305           # line spacing inside a box
 
 def box(ax, x, y, w, h, title, lines, edge, fill,
         title_size=10.6, body_size=8.5):
+    """Draw a rounded box with a bold title and centred body lines.
+
+    Lines starting with "(" are rendered as muted italic annotations.
+    """
     ax.add_patch(FancyBboxPatch(
         (x, y), w, h, boxstyle="round,pad=0.010,rounding_size=0.018",
         linewidth=1.5, edgecolor=edge, facecolor=fill, zorder=2))
@@ -45,6 +49,7 @@ def box(ax, x, y, w, h, title, lines, edge, fill,
 
 
 def arrow(ax, p0, p1, color=INK, label=None, lw=1.7):
+    """Draw an arrow from p0 to p1, with an optional italic label at its midpoint."""
     ax.add_patch(FancyArrowPatch(
         p0, p1, arrowstyle="-|>", mutation_scale=14, linewidth=lw,
         color=color, zorder=4, shrinkA=1, shrinkB=1))
@@ -55,6 +60,7 @@ def arrow(ax, p0, p1, color=INK, label=None, lw=1.7):
 
 
 def main():
+    """Render the model-framework diagram used in the README."""
     fig, ax = plt.subplots(figsize=(15.0, 9.6))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
