@@ -14,6 +14,8 @@ from .pipeline import FoldPipeline
 
 @dataclass
 class CVResult:
+    """Held-out predictions and tuning choices from leave-one-fish-out CV."""
+
     features: list
     risk: np.ndarray            # held-out linear predictor, one per larva
     pred_median_s: np.ndarray   # held-out predicted median latency, seconds
@@ -26,6 +28,7 @@ class CVResult:
 
     @property
     def c_index(self) -> float:
+        """Harrell's concordance index of the held-out risk scores."""
         # Higher linear predictor = higher hazard = shorter latency, so the
         # risk score is negated to align with concordance on survival time.
         return float(concordance_index(self.time, -self.risk, self.event))
