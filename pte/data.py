@@ -15,7 +15,7 @@ from . import config as C
 
 
 class DataValidationError(RuntimeError):
-    pass
+    """Raised when the input table fails a structural or range check."""
 
 
 def load() -> pd.DataFrame:
@@ -26,6 +26,7 @@ def load() -> pd.DataFrame:
 
 
 def validate(df: pd.DataFrame) -> None:
+    """Raise DataValidationError if the table violates the expected design."""
     n = len(df)
 
     if df[C.SUBJECT_COL].nunique() != n:
